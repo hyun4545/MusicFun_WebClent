@@ -1,0 +1,244 @@
+﻿<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"
+        integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+        crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+     
+        //alert(UploadList.list.length);
+        if (UploadList.list.length != 0) {
+            uploading2(uploadQueue);
+        }
+        $('#btn_upload2').click(function () {
+          
+            $('#uploader').click();
+            
+        });
+        $('#uploader').change(function (e) {
+            e.preventDefault();
+            
+            var files_size = $('#uploader')[0].files.length;
+            var uploading_count = $('#upload_field').children().length;
+            var promises = [];            
+            var listSize = UploadList.list.length;
+           for (var i = 0; i < files_size; i++) {
+           // var i = 0;
+                var formData = new FormData();
+                var filename = $('#uploader')[0].files[i].name;
+
+                //filename = filename.replace("/&/g", "");
+                uploadQueue[i] = listSize + i;
+                formData.append('file', $('#uploader')[0].files[i], escape(filename));
+                //alert(filename);
+                
+                //alert(escape(filename));
+             var upload_item = new UploadItem(filename.split(".")[0]);
+              var index= UploadList.Add(upload_item);
+              //alert(index);
+           (function (index) {
+                 var request = $.ajax({
+                      url: "/Main/Upload3",
+                      data: formData,
+                      cache: false,                     
+                      contentType: false,
+                      processData: false,
+                     
+                      type: 'POST',
+                     
+                      success: function (data) {
+                          //alert(data);
+                          if (data == "OK") {
+                              SuccessUpload(index);
+                          } else {
+                              ErrorUpload(index);
+                          }
+                          // UploadList.setStatus(i, 2);
+                      },
+                      error: function (jqXHR, textStatus, errorThrown) {
+                         alert(jqXHR.textStatus + " " + textStatus + " " + errorThrown);
+
+                          ErrorUpload(index);
+                      }
+
+                  });
+                //promises.push(request);
+        })(index);
+                  
+
+             
+              
+               
+            
+            }
+            
+          $.when.apply(null, promises).done(function () {
+
+               // alert('All done');
+               // SuccessUpload(uploadQueue);
+            });
+            uploading2(uploadQueue);
+            //$('#file_name').text(filenames.split(".")[0]);
+        });
+       
+    });
+    
+    function SuccessUpload(index) {
+        var nowthis = $('#upload_field').children().eq(index);
+        nowthis.children('.div_upload_status').eq(index).text("上傳成功");
+        var title = nowthis.children('.div_upload_title').text();
+        myFunction("'"+title + "' 上傳成功!");
+        setTimeout(function () {
+            nowthis.hide('fade', 200);
+        }, 400);
+        UploadList.Remove(index);
+    }
+    function ErrorUpload(index) {
+        var nowthis = $('#upload_field').children().eq(index);
+            $('#upload_field').children().children('.div_upload_status').eq(index).text("上傳失敗");
+            setTimeout(function () {
+                nowthis.hide('fade', 200);
+            }, 400);
+            UploadList.Remove(index);
+    }
+    //UploadItem類別
+    function UploadItem(title) {
+        this.music_title = title;
+        this.upload_status = 1;
+        this.pause_upload = false;
+        this.index;
+    }
+
+    function appendItem(value) {
+        var status_query, pause_query;
+
+        switch (value.upload_status) {
+            case 0://準備上傳
+                status_query = "準備上傳";
+                break;
+            case 1://上傳中
+                status_query = "上傳中...";
+                break;
+            case 2://上傳成功
+                status_query = "上傳成功";
+                break;
+            case 3://上傳失敗
+                status_query = "上傳失敗";
+                break;
+        }
+        switch (value.pause_upload) {
+            case false:
+                pause_query = "暫停";
+                break;
+            case true:
+                pause_query = "繼續";
+                break;
+
+        }
+        $('#upload_field').append("<div data-count='" + value.index+ "'  style='width:100%; height:50px; border-bottom:solid gray 1px; line-height:50px; color:gray;'>" +
+        "<div class='div_upload_title  upload_div'>" + value.music_title + "</div>" +
+        "<div class='div_upload_status  upload_div'>" + status_query +"<p class='cancel_btn'>"+"x"+"</p>"+ "</div>" +
+         "</div>");
+    }
+    function uploading2(uploadQueue) {
+        
+        $.each(uploadQueue, function (key, value) {
+            appendItem(UploadList.list[value]);
+        });
+
+    }
+    function uploading3(uploadQueue) {
+
+        $.each(uploadQueue, function (key, value) {
+            appendItem(UploadList.list[value]);
+        });
+
+    }
+    function uploading() {
+        
+        $.each(UploadList.list, function (key, value) {
+            appendItem(value);
+        });
+        
+    }
+</script>
+<style>
+    #btn_upload2 {
+        
+
+       border:none;
+        color:white;
+        height:50px;
+        width:150px;
+        font-size:17px;       
+        margin-top:30px;
+        font-weight:500;
+        font-family:微軟正黑體;
+        border-radius:10px;
+        text-space-collapse:collapse;
+        outline:none;
+    }
+    .cancel_btn {
+        display:block;        
+       float:right;
+    }
+    #btn_upload2:hover {
+        opacity:0.8;
+    }
+    .div_upload_isgo {
+      
+        width:7%;
+       
+    }
+    .div_upload_cancel {
+     
+       width:7%;
+       
+    }
+    .div_upload_title {
+         
+         width:65%;
+         
+    }
+    .div_upload_status {
+    
+    width:29%;
+    }
+   
+    #upload_field {
+       
+         width:100%;
+          height:auto;
+          min-height:150px;
+        
+    }
+    #upload_field_title {
+       
+         width:100%;
+          height:50px;
+         line-height:50px;
+         opacity:0.8;
+         color:white;
+    }
+    .upload_div {
+        height:inherit;
+        float:left;
+        margin:0 10px 0 10px;
+        text-align:center;
+       
+    }
+</style>
+<form style="text-align:center; "  id="upload_form" enctype="multipart/form-data">
+    <input class="oo2" id="btn_upload2" type="button" value="上傳音樂"  />
+    <input style="visibility:hidden" id="uploader" type="file" name="files" multiple/>
+</form>
+<div class="oo2 " id="upload_field_title" >
+    <div class="div_upload_title  upload_div">歌曲名稱</div>
+    <div class="div_upload_status  upload_div">上傳狀態</div>
+  
+</div>
+<div class="oo3 " id="upload_field" >
+    
+    
+
+</div>
+
+<p id="file_name"></p>

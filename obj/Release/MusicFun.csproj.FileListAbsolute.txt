@@ -1,0 +1,162 @@
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\roslyn\csc.exe
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\roslyn\vbc.exe
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\roslyn\VBCSCompiler.exe
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\MusicFun.dll.config
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\MusicFun.dll
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\MusicFun.pdb
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\AttributeRouting.dll
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\AttributeRouting.Web.dll
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\AttributeRouting.Web.Mvc.dll
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\Lib.Web.Mvc.dll
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\Newtonsoft.Json.dll
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\System.Web.Helpers.dll
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\System.Web.Mvc.dll
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\System.Web.Razor.dll
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\System.Web.Webpages.Deployment.dll
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\System.Web.Webpages.dll
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\System.Web.Webpages.Razor.dll
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\WebActivator.dll
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\AttributeRouting.xml
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\AttributeRouting.Web.xml
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\AttributeRouting.Web.Mvc.xml
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\Lib.Web.Mvc.xml
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\Newtonsoft.Json.xml
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\WebActivator.pdb
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\System.Web.Razor.xml
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\System.Web.Webpages.xml
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\System.Web.Webpages.Deployment.xml
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\System.Web.Webpages.Razor.xml
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\System.Web.Helpers.xml
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\System.Web.Mvc.xml
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\zh-Hant\System.Web.Razor.resources.dll
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\zh-Hant\System.Web.Webpages.resources.dll
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\zh-Hant\System.Web.Webpages.Deployment.resources.dll
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\zh-Hant\System.Web.Webpages.Razor.resources.dll
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\zh-Hant\System.Web.Helpers.resources.dll
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\zh-Hant\System.Web.Mvc.resources.dll
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\obj\Release\MusicFun.dll
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\obj\Release\MusicFun.pdb
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\obj\Release\MusicFun.csprojResolveAssemblyReference.cache
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\policy.2.0.taglib-sharp.dll
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\taglib-sharp.dll
+C:\Users\myungjong\Documents\Visual Studio 2013\Projects\MusicFun\MusicFun\bin\policy.2.0.taglib-sharp.config
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\roslyn\csc.exe
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\roslyn\vbc.exe
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\roslyn\VBCSCompiler.exe
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\MusicFun.dll.config
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\MusicFun.dll
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\MusicFun.pdb
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\AttributeRouting.dll
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\AttributeRouting.Web.dll
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\AttributeRouting.Web.Mvc.dll
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\Lib.Web.Mvc.dll
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\Newtonsoft.Json.dll
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\policy.2.0.taglib-sharp.dll
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\System.Web.Helpers.dll
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\System.Web.Mvc.dll
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\System.Web.Razor.dll
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\System.Web.Webpages.Deployment.dll
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\System.Web.Webpages.dll
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\System.Web.Webpages.Razor.dll
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\taglib-sharp.dll
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\WebActivator.dll
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\AttributeRouting.xml
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\AttributeRouting.Web.xml
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\AttributeRouting.Web.Mvc.xml
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\Lib.Web.Mvc.xml
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\Newtonsoft.Json.xml
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\WebActivator.pdb
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\System.Web.Razor.xml
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\System.Web.Webpages.xml
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\System.Web.Webpages.Deployment.xml
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\System.Web.Webpages.Razor.xml
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\System.Web.Helpers.xml
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\System.Web.Mvc.xml
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\zh-Hant\System.Web.Razor.resources.dll
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\zh-Hant\System.Web.Webpages.resources.dll
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\zh-Hant\System.Web.Webpages.Deployment.resources.dll
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\zh-Hant\System.Web.Webpages.Razor.resources.dll
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\zh-Hant\System.Web.Helpers.resources.dll
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\zh-Hant\System.Web.Mvc.resources.dll
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\bin\policy.2.0.taglib-sharp.config
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\obj\Release\MusicFun.csprojResolveAssemblyReference.cache
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\obj\Release\MusicFun.dll
+C:\Users\myungjong\Desktop\MusicFun170316\MusicFun\MusicFun\obj\Release\MusicFun.pdb
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\roslyn\csc.exe
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\roslyn\vbc.exe
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\roslyn\VBCSCompiler.exe
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\MusicFun.dll.config
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\MusicFun.dll
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\MusicFun.pdb
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\AttributeRouting.dll
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\AttributeRouting.Web.dll
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\AttributeRouting.Web.Mvc.dll
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\Lib.Web.Mvc.dll
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\Newtonsoft.Json.dll
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\policy.2.0.taglib-sharp.dll
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\System.Web.Helpers.dll
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\System.Web.Mvc.dll
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\System.Web.Razor.dll
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\System.Web.Webpages.Deployment.dll
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\System.Web.Webpages.dll
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\System.Web.Webpages.Razor.dll
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\taglib-sharp.dll
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\WebActivator.dll
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\AttributeRouting.xml
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\AttributeRouting.Web.xml
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\AttributeRouting.Web.Mvc.xml
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\Lib.Web.Mvc.xml
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\Newtonsoft.Json.xml
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\WebActivator.pdb
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\System.Web.Razor.xml
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\System.Web.Webpages.xml
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\System.Web.Webpages.Deployment.xml
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\System.Web.Webpages.Razor.xml
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\System.Web.Helpers.xml
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\System.Web.Mvc.xml
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\zh-Hant\System.Web.Razor.resources.dll
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\zh-Hant\System.Web.Webpages.resources.dll
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\zh-Hant\System.Web.Webpages.Deployment.resources.dll
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\zh-Hant\System.Web.Webpages.Razor.resources.dll
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\zh-Hant\System.Web.Helpers.resources.dll
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\zh-Hant\System.Web.Mvc.resources.dll
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\bin\policy.2.0.taglib-sharp.config
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\obj\Release\MusicFun.csprojResolveAssemblyReference.cache
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\obj\Release\MusicFun.dll
+C:\Users\myungjong\Desktop\新增資料夾 (8)\MusicFun170316\MusicFun\MusicFun\obj\Release\MusicFun.pdb

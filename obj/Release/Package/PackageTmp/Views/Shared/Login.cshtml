@@ -1,0 +1,314 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="~/Content/bootstrap.css" />   
+    <link href="~/Content/fontello.css" rel="stylesheet" /> 
+    <link href="~/Content/animation.css" rel="stylesheet" />
+    <style>
+        #logo {
+            height:30%;
+            width:100%;
+            padding:0 65px 0 65px;
+            
+        }
+        .animate-spin {
+  -moz-animation: spin 2s infinite linear;
+  -o-animation: spin 2s infinite linear;
+  -webkit-animation: spin 2s infinite linear;
+  animation: spin 2s infinite linear;
+  display: inline-block;
+}
+        #login-form {
+        height:70%;
+        width:100%;
+        
+        }
+        #container {
+            width:100%;
+           height:100%;
+           
+           padding:30px 0 30px 0;
+        }
+        #wrapper {
+           
+            padding:12vh 50px 12vh 50px;
+             height:100vh;
+        }
+        #login-logo {
+            height: 100%;
+            width: 100%;
+            background-image: url('../../Image/logo083122-01.png');
+            background-size:contain;
+            background-repeat:no-repeat;
+            background-position:center;
+        }
+        #login-text {
+            margin-top:40px;
+            padding:20px;
+            width:100%;
+            height:40%;
+           
+        }
+        #login-other {
+            width:100%;
+            height:60%;
+            padding:30px;
+            margin-top:10px;
+            text-align:center;
+        }
+        .input-txt {
+        width:100%;
+        font-size:17px;
+        margin-bottom:30px;
+        background-color:transparent;
+        color:rgb(67,149,203);
+        display:block;
+       border-bottom:solid 1px rgb(67,149,203) ;
+       border-left:none;
+       border-right:none;
+       border-top:none;
+       text-align:center;
+       outline:none;
+        }
+        .input-txt2 {
+            background-color:transparent;
+             border-bottom:solid 1px rgb(67,149,203) ;
+       border-left:none;
+       border-right:none;
+       border-top:none;
+       text-align:center;
+       outline:none;
+       color:rgb(67,149,203);
+        font-size:17px;
+        width:100%;
+        }
+         .oo3 {
+                  background: rgba(180,76,228,0.1);
+                  background-attachment: fixed;
+                  /* Old Browsers */ background: -moz-linear-gradient(-45deg, rgba(180,76,228,0.1) 0%, rgba(67,149,203,0.1) 52%, rgba(51,204,204,0.1) 100%);
+                  /* FF3.6+ */ background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(180,76,228,0.1)), color-stop(52%, rgba(67,149,203,0.1)), color-stop(100%, rgba(51,204,204,0.1)));
+                  /* Chrome, Safari4+ */ background: -webkit-linear-gradient(-45deg, rgba(180,76,228,0.1) 0%, rgba(67,149,203,0.1) 52%, rgba(51,204,204,0.1) 100%);
+                  /* Chrome10+,Safari5.1+ */ background: -o-linear-gradient(-45deg, rgba(180,76,228,0.1) 0%, rgba(67,149,203,0.1) 52%, rgba(51,204,204,0.1) 100%);
+                  /* Opera 11.10+ */ background: -ms-linear-gradient(-45deg, rgba(180,76,228,0.1) 0%, rgba(67,149,203,0.1) 52%, rgba(51,204,204,0.1) 100%);
+                  /* IE 10+ */ background: linear-gradient(135deg, rgba(180,76,228,0.1) 0%, rgba(67,149,203,0.1) 52%, rgba(51,204,204,0.1) 100%);
+                  /* W3C */ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b44ce4', endColorstr='#33cccc', GradientType=1 );
+                  /* IE6-9 fallback on horizontal gradient */
+              }
+        .oo2 {
+                  background: #b44ce4;
+                  /* Old Browsers */ background: -moz-linear-gradient(-45deg, #b44ce4 0%, #4395cb 52%, #33cccc 100%);
+                  /* FF3.6+ */ background: -webkit-gradient(left top, right bottom, color-stop(0%, #b44ce4), color-stop(52%, #4395cb), color-stop(100%, #33cccc));
+                  /* Chrome, Safari4+ */ background: -webkit-linear-gradient(-45deg, #b44ce4 0%, #4395cb 52%, #33cccc 100%);
+                  /* Chrome10+,Safari5.1+ */ background: -o-linear-gradient(-45deg, #b44ce4 0%, #4395cb 52%, #33cccc 100%);
+                  /* Opera 11.10+ */ background: -ms-linear-gradient(-45deg, #b44ce4 0%, #4395cb 52%, #33cccc 100%);
+                  /* IE 10+ */ background: linear-gradient(135deg, #b44ce4 0%, #4395cb 52%, #33cccc 100%);
+                  /* W3C */ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b44ce4', endColorstr='#33cccc', GradientType=1 );
+                  /* IE6-9 fallback on horizontal gradient */
+              }
+        .ee {
+            width: 160px;
+            height: 160px;
+            margin:auto;
+            background-size:contain;
+            cursor:pointer;
+            display:block;
+        }
+        .ee:hover {
+            background-color:white;
+            border-radius:180px;
+        }
+        .cc{
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2490b7+0,2339ba+50,ad76db+100 */
+background: #2490b7; /* Old browsers */
+background: -moz-linear-gradient(top,  #2490b7 0%, #2339ba 50%, #ad76db 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #2490b7 0%,#2339ba 50%,#ad76db 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  #2490b7 0%,#2339ba 50%,#ad76db 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2490b7', endColorstr='#ad76db',GradientType=0 ); /* IE6-9 */
+
+}
+    .demo-icon
+    {
+        
+      font-family: "fontello";
+      font-style: normal;     
+   margin-bottom:15px;
+  font-size:50px;
+color:white;
+}
+    
+    </style>
+    <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script>
+        $(document).ready(function () {
+            //alert("fwefew");
+            $('#open-register').click(function () {
+                $('#register-form')[0].reset();
+            });
+            $('#register-submit').click(function (e) {
+                e.preventDefault();
+                
+               
+                //alert("llll");
+                //$('#register-dialog').modal("hide");
+                
+                $('#register-dialog').modal("hide");
+                $('#load-box').css('visibility', 'visible');
+                //$('#load-box').css('visibility', 'visible');
+                //alert("kkkk");
+                //e.preventDefault();
+               // var formElement = document.getElementById('#register-form');
+                var formdata = new FormData($('#register-form')[0]);
+                // sendForm('/Main/Register', formdata);
+                
+                    
+                    $.ajax({
+                        url: '/Main/Register',
+                        data: formdata,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        type: 'POST',
+                        dataType:'json',
+                        //async: false,
+                        
+                        success: function (data) {
+                            //alert(data.status);
+                           if (data.status == 1) {
+                               
+                               window.location.assign("/Main/Index");
+                              
+                                   $('#load-box').css('visibility', 'hidden');
+                              
+                               
+                           } else {                               
+                               alert(data.message);
+                               $('#load-box').css('visibility', 'hidden');
+                           }
+                           $('#load-box').css('visibility', 'hidden');
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            alert(jqXHR.responseText + " " + textStatus + " " + errorThrown);
+
+                        }
+                    });
+               
+               
+               
+            });
+            $('#login-submit').click(function (e) {
+                e.preventDefault();
+
+
+                //alert("llll");
+                //$('#register-dialog').modal("hide");
+
+               
+                $('#load-box').css('visibility', 'visible');
+                //$('#load-box').css('visibility', 'visible');
+                //alert("kkkk");
+                //e.preventDefault();
+                // var formElement = document.getElementById('#register-form');
+                var formdata = new FormData($('#login-form')[0]);
+                // sendForm('/Main/Register', formdata);
+
+
+                $.ajax({
+                    url: '/Main/Login',
+                    data: formdata,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    type: 'POST',
+                    dataType: 'json',
+                    //async: false,
+
+                    success: function (data) {
+                        //alert(data.status);
+                        if (data.status == 1) {
+
+                            window.location.replace("/Main/Index");
+                            $('#load-box').css('visibility', 'hidden');
+                        } else {
+                            alert(data.message);
+                            $('#load-box').css('visibility', 'hidden');
+                        }
+                        $('#load-box').css('visibility', 'hidden');
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        alert(jqXHR.responseText + " " + textStatus + " " + errorThrown);
+
+                    }
+                });
+
+
+
+            });
+        });
+
+        function sendForm(url, formdata) {
+            
+        }
+        
+    </script>
+</head>
+<body class="oo3" style="width:100vw;">
+  <div  id="load-box" style="width:100vw;height:100vh;position:absolute; visibility:hidden; background-color:rgba(0,0,0,0.5); justify-content: center; z-index:100; display:flex; align-items:center;"><div style="text-align:center;"><i class="animate-spin demo-icon" style="">&#xe832;</i><span style="font-size:20px;  font-family:'微軟正黑體';  color:white; display:block; ">載入中...</span></div></div>
+    <!-- Modal -->
+    <div  class="modal fade" id="register-dialog" tabindex="-1" role="dialog"  aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="margin-top:50px; height:450px;">
+                <div class="modal-header" style="height:50px;">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>                   
+                </div>
+                <div class="modal-body" style="padding:40px; height:400px; ">
+                    <div style="width:100%; height:100%;">
+                        <div style="width:100%; height:13%;  border-bottom:solid 1px black; margin-bottom:28px; font-family:微軟正黑體; font-size:20px; text-align:center">會員註冊</div>
+                        <div style="padding:0 120px 0 120px; width:100%; height:70%; text-align:center; ">
+                            <form id="register-form" enctype="multipart/form-data" method="post" >
+                                <input class="input-txt" name="name" placeholder="姓名" type="text" />
+                                <input class="input-txt" name="email" placeholder="電子郵件" type="text" />
+                                <input class="input-txt" name="password" placeholder="密碼" type="text" />
+                                <button class="oo2 " id="register-submit"   style="width:120px; height:35px; margin-top:15px; border-radius:30px; border:none; color:white; font-family:'微軟正黑體'; outline:none; font-size:15px;">註冊</button>
+                            </form>                           
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4" style="display:flex; text-align:center;height:100vh; align-items:center;">
+                <a class="ee" href="https://www.facebook.com/Music-Fun-1712042382445734/" style="background-image: url('../../Image/fb-01.png');"></a>
+            </div>
+            <div class="col-md-4"  id="wrapper">
+                <div id="container">
+                    <div id="logo">
+                        <div id="login-logo"></div>
+                    </div>
+                    <form id="login-form">
+                        <div id="login-text">
+                            <input class="input-txt"  placeholder="電子郵件" name="email" type="text"  />
+                            <input class="input-txt" placeholder="密碼" name="password" type="password"  />
+                        </div>
+                        <div id="login-other">
+                            <input class="oo2 " id="login-submit" value="登入" type="submit" style="width:120px; outline:none; height:35px; border-radius:30px; border:none; color:white; font-family:微軟正黑體; font-size:15px;" />
+                            <a id="open-register" data-toggle="modal" data-target="#register-dialog" style="display:block; margin-top:15px; cursor:pointer; font-size:17px; font-weight:400; font-family:微軟正黑體; text-decoration:underline;">註冊</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-4" style="display:flex; text-align:center;height:100vh; align-items:center;">
+                <a class="ee" href="/Main/Download" style="background-image: url('../../Image/mobile version-01.png');"></a>
+            </div>
+        </div>
+
+    </div>
+  
+</body>
+</html>
+

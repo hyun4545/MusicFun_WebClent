@@ -1,0 +1,489 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <!---media="screen and (min-device-width: 500px) "-->
+    <link rel="stylesheet"  href="~/Content/ver_pc.css" />
+    <!---link rel="stylesheet" media="screen and (max-device-width: 500px)" href="~/Content/ver_tablet.css" /-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/fontello.css" />
+    <link rel="stylesheet" href="~/Content/animation.css" />
+   
+    <style>
+        
+        h1 {
+           background-color:transparent
+        }
+    </style>
+   
+    <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script>
+        function myFunction(s) {
+            //alert("efeafea");
+            var x = document.getElementById("snackbar")
+            x.textContent = s;
+            x.className = "show";
+            setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+        }
+        function showloading() {
+            $('#container22').load(null);
+            $('#load-box').css('visibility', 'visible');
+            
+
+        }
+        function nn() {
+            
+            var kk = document.getElementById('my-audio');
+            alert(kk.buffered.end(0));
+            var ll=kk.buffered.end(0)
+            
+        }
+        var playIndex, songCount;
+        var playMode = 0;
+        var uploadQueue = [];
+        var isLoading = true;
+        var upload_list = new Array();
+        function UploadList() {
+        }
+
+        UploadList.Index = function (item) {
+            return UploadList.list.indexOf(item);
+        }
+
+        UploadList.list = new Array();
+        UploadList.Add = function (item) {
+            var count = UploadList.list.length;
+            item.index = count;
+            UploadList.list[count] = item;
+            return count;
+        };
+        UploadList.get = function (index) {
+            return UploadList.list[index];
+        };
+        UploadList.setStatus = function (index, status) {
+            UploadList.list[index].status = status;
+        };
+        UploadList.setPause = function (index, isPause) {
+            UploadList.list[index].pause_upload = isPause;
+        };
+        UploadList.Remove = function (index) {
+            UploadList.list.splice(index, 1);
+        }
+        var hover_nav = 0;
+        $(document).ready(function () {
+            
+            $('#pc-nav .header_selector').eq(0).css({ 'border-bottom': 'solid 2px #4395cb' });
+        
+            var nav_offset = $('#btn_all_music').offset();
+            //alert(nav_offset.left);
+            $('#nav-frame').css({ 'left': nav_offset.left, 'top': nav_offset.top });
+            /*$(window).scroll(function (e) {
+                if ($(this).scrollTop() > 190) {
+                    $('#mobile-nav').css( 'position', 'fixed');                   
+                } else {
+                    $('#mobile-nav').css('position', 'initial');
+                 
+                }
+            });*/
+            $('#range').change(function () {
+                //alert($(this).val());
+            });
+             
+    
+           
+            $('#btn').click(function(){
+               
+                var kk=document.getElementById('my-audio');
+                var ll=kk.buffered.end(kk.buffered.length-1)
+               // alert("buffer:"+ll+" duration:"+kk.duration);
+            });
+            
+            $('.header_selector').hover(function () {
+                $('#nav-frame').css('visibility', 'visible');
+                var offset = $(this).offset();
+                //alert(offset.left);
+                
+                $('#nav-frame').animate({ 'left': offset.left, 'top': offset.top },100);
+            });
+            $('.nav2').mouseout(function () {
+                $('#nav-frame').css('visibility', 'hidden');
+            });
+            jj("");
+            $('#music_item').click(function () {
+               // alert("id");
+                var id = $(this).data("id");
+
+                $("#my-audio").attr("src", "/Main/Stream/" + id)
+            });
+           $(window).scroll(function (e) {
+               // alert($(this).scrollTop());
+                if ($(this).scrollTop() > 220){
+                   // alert("eafeaw");                   
+                    $('.nav').css({ 'visibility': 'hidden !important' });
+                    $('.nav2').css({ 'opacity': 0.8, 'top': 0, 'position': 'fixed' });
+                    $('#user-bar').css({ 'visibility': 'hidden !important' });
+                } else {
+
+                    $('.nav2').css({ 'opacity': 1, 'top': '150px', 'position': 'initial' });
+                    $('.nav').css({ 'visibility': 'visible !important' });
+                    $('#user-bar').css({ 'visibility': 'visible !important' });
+                }
+            });
+
+
+        });
+        function jj(s) {
+            $('#load-box').css('visibility', 'visible');
+            //$('body').css({ 'overflow': 'hidden' });
+            var url = "/Main/MusicList";
+            //alert(s.length);
+            if (s.length!=0 ) {
+                url += "?keyword=" + s;
+                //alert(url);
+            } 
+            $('#container22').load(url, function () {
+               
+                isLoading = false;
+                $('#load-box').css('visibility', 'hidden');
+                //alert("div loaded!!");
+
+                $('#btn_all_music').click(function () {
+
+                    if (!isLoading) {
+                       // $('#container22').load(null);
+                        $('#load-box').css('visibility', 'visible');
+                        hover_nav = 0;
+                        $('#container22').load("/Main/MusicList", function () {
+                            afterLoad(0);
+                        });
+                    }
+                    isLoading = true;
+                });
+                $('#btn_list').click(function () {
+
+                    if (!isLoading) {
+                        hover_nav = 1;
+                       // $('#container22').load(null);
+                        $('#load-box').css('visibility', 'visible');
+                        $('#container22').load("/Main/getSongList", function () {
+                            afterLoad(1);
+                        });
+                    }
+                    isLoading = true;
+
+                });
+                $('#btn_upload').click(function () {
+
+                    if (!isLoading) {
+                       
+
+                        //$('#container22').load(null);
+                        $('#load-box').css('visibility', 'visible ');
+                        $('#container22').load("/Main/UploadList", function () {
+                            afterLoad(2);
+                        });
+                    }
+                    isLoading = true;
+
+                });
+            });
+            }
+        function afterLoad(index) {
+            $('#load-box').css('visibility', 'hidden');
+            isLoading = false;
+            $('#pc-nav .header_selector').css({ 'border-bottom': 'none' });
+            $('#pc-nav .header_selector').eq(index).css({ 'border-bottom': 'solid 2px #4395cb' });
+        }
+        
+</script>
+    
+</head>
+<body  style="padding:0;margin:0;    ">
+    <div id="load-box" style="width:100vw;  height:100vh;position:fixed; visibility:hidden; background-color:rgba(0,0,0,0.5); justify-content: center; z-index:100; display:flex; align-items:center;"><div style="text-align:center;"><i class="animate-spin demo-icon" style="">&#xe832;</i><span style="font-size:20px;  font-family:'微軟正黑體';  color:white; display:block; ">載入中...</span></div></div>
+    <div class="oo2" style="height:100vh; z-index:-1; color:cadetblue; position:fixed;right:0; opacity:0.1;     margin:0; float:right;  width:100%; ">
+    </div>
+    <div style="height:100vh; background-color:rgba(255,255,255,0.6); visibility:hidden;   float:left; margin:0; width:20%; position:fixed;  text-align:center; ">
+        <img src="~/Image/nav1.png" style="height:120px; width:auto; margin-top:80px;" />
+        <ul>
+            <li>上傳歌曲</li>
+            <li>會員專區</li>
+            <li>登出</li>
+        </ul>
+    </div>
+
+
+
+
+
+    
+<div id="pc-nav">
+    <nav class="nav" style="">
+        <img src="~/Image/logo083122-01.png" style="height:100%; width:auto; " />
+
+    </nav>
+    <ul id="user-bar" style="height:150px; position:absolute; font-size:15px; top:0; font-family:微軟正黑體; right:0; padding:50px 100px 50px 50px; ">
+        <li class="main-nav"><a href="/Main/Logout" style="cursor:pointer;">登出</a></li>
+        <li class="main-nav" id="user">@TempData["user"]，你好!&nbsp&nbsp/&nbsp&nbsp</li>
+    </ul>
+    <div id="nav-frame" ></div>
+    <ul class="nav2" style="display:block; width:99vw; background-color:white; color:gray; z-index:500; height:70px; text-align:center;  border-bottom:solid 1px rgba(67,149,203,0.4);margin:0;   ">
+       
+        <li class="header_selector" id="btn_all_music">全部歌曲</li>
+        <li class="header_selector" id="btn_list">播放清單</li>
+        <li class="header_selector" id="btn_upload">上傳項目</li>
+    </ul>
+</div>
+    <div id="snackbar"></div>
+    <!--button onclick="nn()" id="btn">22233</!--button><i class="demo-icon">&#xe831;</i-->
+    <div id="container22" style="margin-bottom:800px !important;">
+       
+        @RenderBody()
+        <!---div class="col-lg-3">
+            <div class="list-wrapper ">
+                <div class="list-cover">
+                </div>
+                <div class="player-btn-container oo2">
+                    <img src="ic_play_circle_outline_white_48dp_2x.png" class="player-btn" />
+                </div>
+                <div class="title-contain">
+                    <span class="list-title">
+                        GOT7
+
+                    </span>
+                    <span class="list-total">
+                        共5首
+                    </span>
+                </div>
+            </div>
+        </!--div>
+
+        <div class="col-lg-3">
+            <div class="list-wrapper ">
+                <div class="list-cover">
+                </div>
+                <div class="player-btn-container oo2">
+                    <img src="ic_play_circle_outline_white_48dp_2x.png" class="player-btn" />
+                </div>
+                <div class="title-contain">
+                    <span class="list-title">
+                        GOT7
+
+                    </span>
+                    <span class="list-total">
+                        共5首
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="list-wrapper ">
+                <div class="list-cover">
+                </div>
+                <div class="player-btn-container oo2">
+                    <img src="ic_play_circle_outline_white_48dp_2x.png" class="player-btn" />
+                </div>
+                <div class="title-contain">
+                    <span class="list-title">
+                        GOT7
+
+                    </span>
+                    <span class="list-total">
+                        共5首
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="list-wrapper ">
+                <div class="list-cover">
+                </div>
+                <div class="player-btn-container oo2">
+                    <img src="ic_play_circle_outline_white_48dp_2x.png" class="player-btn" />
+                </div>
+                <div class="title-contain">
+                    <span class="list-title">
+                        GOT7
+
+                    </span>
+                    <span class="list-total">
+                        共5首
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div-->
+
+
+
+    <!--div style="padding:50px 20px 80px 20px; height:30px; width:100%; ">
+        <form style="float:right; margin:0;  display:flex; justify-content:space-between;  width:200px; border-radius:20px; height:30px; align-items:center;  padding: 0 15px 0 15px;" class="oo" action="">
+
+            <input type="search" style="border:none; width:80%;    height:20px; background-color:rgba(255,255,255,0); margin:0; color:white;" placeholder="Search" />
+            <button type="submit" style="border:none;     cursor:pointer; background-color:rgba(255,255,255,0);    background-image:url('ic_search_white_36dp_1x.png'); background-size:contain; width:20px; height:20px; " value="search"></button>
+
+
+        </form>
+    </!--div>
+
+
+
+    <div class="col-lg-4 contenter_c  ">
+
+        <div class="wrapper oo2">
+
+            <div class="inner_wrapper">
+                <div class="text_wrapper">
+                    <span class="song_title">If You Do</span>
+                    <span class="author">GOT7</span>
+                </div>
+                <span class="btn_wrapper">
+
+                </span>
+            </div>
+            <div class="cover" style=""></div>
+        </div>
+    </div>
+    <div class="col-lg-4 contenter_c ">
+        <div class="wrapper">
+            <div class="inner_wrapper">
+                <div class="text_wrapper">
+                    <span class="song_title">If You Do</span>
+                    <span class="author">GOT7</span>
+                </div>
+                <span class="btn_wrapper">
+
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 contenter_c ">
+        <div class="wrapper">
+            <div class="inner_wrapper">
+                <div class="text_wrapper">
+                    <span class="song_title">If You Do</span>
+                    <span class="author">GOT7</span>
+                </div>
+                <span class="btn_wrapper">
+
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 contenter_c ">
+        <div class="wrapper">
+            <div class="inner_wrapper">
+                <div class="text_wrapper">
+                    <span class="song_title">If You Do</span>
+                    <span class="author">GOT7</span>
+                </div>
+                <span class="btn_wrapper">
+
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 contenter_c ">
+        <div class="wrapper">
+            <div class="inner_wrapper">
+                <div class="text_wrapper">
+                    <span class="song_title">I Need You</span>
+                    <span class="author">郭采潔</span>
+                </div>
+                <span class="btn_wrapper">
+
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 contenter_c  ">
+        <div class="wrapper oo2">
+            <div class="inner_wrapper">
+                <div class="text_wrapper">
+                    <span class="song_title">If You Do</span>
+                    <span class="author">GOT7</span>
+                </div>
+                <span class="btn_wrapper">
+
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 contenter_c  ">
+        <div class="wrapper oo2">
+            <div class="inner_wrapper">
+                <div class="text_wrapper">
+                    <span class="song_title">If You Do</span>
+                    <span class="author">GOT7</span>
+                </div>
+                <span class="btn_wrapper">
+
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 contenter_c  ">
+        <div class="wrapper oo2">
+            <div class="inner_wrapper">
+                <div class="text_wrapper">
+                    <span class="song_title">If You Do</span>
+                    <span class="author">GOT7</span>
+                </div>
+                <span class="btn_wrapper">
+
+                </span>
+            </div>
+        </div>
+    </div!-->
+
+        </div>
+
+
+
+
+    <div id="player-wrapper"  >
+        <div id="player-front" >
+            <div id="player-loading" ><i id="music-loader" class="animate-spin demo-icon">&#xe832;</i></div>
+        </div>
+        <div id="song-title"></div>
+        <div id="player-box">
+            <audio  id="my-audio" preload="auto" ></audio>
+          
+            <div id="player-progress" >
+                <div id="music_progress" >
+                    <div class="oo2" id="current_progress" ></div>
+                    <div id="buffer_progress" ></div>
+                </div>
+                
+                <div>
+                    <div id="current_time" style="float:left;">00:00</div>
+                    <div id="duration_time" style="float:right;">00:00</div>
+                </div>
+            </div>
+          
+            
+        </div>
+        <div id="player-btn-container">
+            <button class="player-btns" id="prev-btn" style="background-image: url('../../Image/ic_skip_previous_white_48dp_1x.png');"></button>
+            <button class="player-btns" id="play-btn" data-status=false style="background-image: url('../../Image/ic_play_arrow_white_48dp_1x.png');"></button>
+            <button class="player-btns" id="next-btn" style="background-image: url('../../Image/ic_skip_next_white_48dp_1x.png');"></button>
+        </div>
+        <div style="width:100px; height:inherit;  float:right; margin-right:120px; display:flex; 
+    align-items:center; text-align:center; ">
+            <button class="player-btns"  id="playmode-btn" style="background-image: url('../../Image/ic_repeat_white_48dp_1x.png'); height:50px; width:50px; "></button>
+           
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    
+</body>
+</html>

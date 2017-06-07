@@ -1,0 +1,455 @@
+﻿@model IEnumerable<MusicFun.Models.MusicList>
+    <style>
+  
+    </style>
+<script>
+    var isLoading = false;
+    var audio = document.getElementById("my-audio");
+    var customcount = 0;
+    var seekProgress;
+     var edit_id,title,author;
+    
+    function mm($this) {
+        audio.onloadeddata = function () {
+            customcount++;            
+            var minute = parseInt(audio.duration / 60);
+            var second = parseInt(audio.duration % 60);            
+            $('#duration_time').text(padLeft(minute, 2) + ":" + padLeft(second, 2));
+            audio.play();
+        };
+        audio.onpause = function () {            
+            $('#play-btn').css('background-image', 'url("../../Image/ic_play_arrow_white_48dp_1x.png")');
+            $('#play-btn').data("status",false) ;
+        }
+       
+        audio.onplaying = function () {
+            $('#music-loader').css('visibility', 'hidden');
+            $this.attr('src', '/Image/musicfun.gif');            
+            
+        }
+        audio.onplay = function () {
+            $('#play-btn').css('background-image', 'url("../../Image/ic_pause_white_48dp_1x.png")');
+            $('#play-btn').data("status",true);
+        }
+        audio.onended = function () {         
+            next();
+        }
+        var circle_current = setInterval(function () {           
+            updateCurrent();
+            updateBuffer();
+        }, 50);
+       
+
+        function updateCurrent() {
+            var current = (audio.currentTime / audio.duration) * 100;
+            var buffer = (audio.buffered.end(audio.buffered.length - 1) / audio.duration) * 100;
+            if (current > 100) {
+                clearInterval(circle_current);                
+            } else if (seekProgress < buffer && isLoading) {              
+                var loadedEvent = new Event('bufferLoaded');
+                audio.dispatchEvent(loadedEvent);
+                isLoading = false;
+            } else {
+                if (!isLoading) {
+                    $('#current_progress').width(current + "%");
+                    var minute = parseInt(audio.currentTime / 60);
+                    var second = parseInt(audio.currentTime % 60);
+                    $('#current_time').text(padLeft(minute, 2) + ":" + padLeft(second, 2));
+                }                
+            }
+           
+        }
+        
+        function updateBuffer() {
+
+            var buffer = (audio.buffered.end(audio.buffered.length - 1) / audio.duration) * 100;
+            
+                $('#buffer_progress').width(buffer + "%");
+             
+           
+        }
+    }
+    function padLeft(str, len) {
+        str = '' + str;
+        if (str.length >= len) {
+            return str;
+        } else {
+            return padLeft("0" + str, len);
+        }
+    }
+   
+    function addSongList(list_id) {      
+        $('#addListModel').modal("hide");
+        var formData = new FormData();
+        formData.append('list_id', list_id);
+        formData.append('song_id', edit_id);
+        if (!isLoading) {            
+            $('#load-box').css('visibility', 'visible');
+            $.ajax({
+                url: '/Main/addSongToList',
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                type: 'POST',
+                success: function (data) {
+                    $('body').removeClass("sss");                  
+                        afterLoad(1);
+                        myFunction("成功加入清單!!");                 
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(jqXHR + " " + textStatus + " " + errorThrown);
+
+                }
+            });           
+        }
+        isLoading = true;
+       
+
+    }
+    $(document).ready(function () {
+        songCount = $('.contenter_c').length;     
+        $('#q_submit').click(function () {
+            var search_query = $('#search_query').val();
+            jj(search_query);
+        });
+        $('#myModal2').on('hidden.bs.modal', function (e) {
+            $('body').removeClass("sss");
+        })
+        $('.play_icon').hover(function () {
+            $(this).animate({ opacity: 1}, 300)
+        }, function () {
+            $(this).animate({ opacity: 0.7}, 300)
+        });
+       
+        $('.more').click(function () {
+            title = $(this).data("title");
+            edit_id = $(this).data("id");
+            author = $(this).data("author");           
+            $('.dialog-title').text(title);
+            $('#song_name').val(title);
+            $('#author').val(author);
+           
+        });
+        $('#modify-submit').click(function () {
+            var formData = new FormData();
+            formData.append('id', edit_id);
+            if ($('#author').val()=="" || $('#song_name').val()=="") {
+                alert("欄位不能為空!")
+            }
+            formData.append('author', $('#author').val());
+            formData.append('song_name', $('#song_name').val());
+            $.ajax({
+                url: '/Main/Modify',
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                type: 'POST',               
+                success: function (data) {
+                    //alert(data);
+                    if (data == "OK") {
+                        $('#myModal2').modal("hide");
+                        jj("");
+                    }
+                    // UploadList.setStatus(i, 2);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                   // alert(jqXHR + " " + textStatus + " " + errorThrown);
+                   
+                }
+            })
+        });
+        $('#add-list-song').click(function () {
+            $.ajax({
+                url: '/Main/getSongsList',
+                type: 'GET',
+                dataType:"json",
+                success: function (data) {
+                    var items = '';
+                    $.each(data, function (i, item) {
+
+                        var rows = "<li><a onclick='addSongList(" + item.Id + ")' class='list-select' data-id='" + item.Id + "' >"
+                        + item.list_name
+                        + "</a></li>";
+                        $('#list-dropdown').append(rows);
+                    });
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                   alert(jqXHR + " " + textStatus + " " + errorThrown);
+                   
+                }
+            });
+
+            $('#addListModel').modal("show");
+            $('#myModal').modal("toggle");
+            $('body').addClass("sss");
+        });
+        $('#delete-btn').click(function () {
+            var isDelete = confirm("確定要刪除 '" + title + "' ?");
+            var formData = new FormData();
+            formData.append('id', edit_id);
+            if (isDelete) {
+                $.ajax({
+                    url: '/Main/Delete',
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    type: 'POST',
+                    success: function (data) {
+                        //alert(data);
+                        if (data == "OK") {
+                            $('#myModal').modal("hide");
+                            jj("");
+                        }
+                        // UploadList.setStatus(i, 2);
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        //alert(jqXHR + " " + textStatus + " " + errorThrown);
+                        $('#myModal').modal("hide");
+                    }
+                });
+
+            } else {
+                $('#myModal').modal("hide");
+            }
+        });
+
+        $('#music_progress').click(function (e) {
+            var left = $(this).offset().left;
+            var percent = ((e.pageX - left) / $(this).width());
+            
+            //alert(percent);
+            $('#current_progress').width(parseInt(percent * 100) + "%");
+            var minute = parseInt(audio.duration*percent / 60);
+            var second = parseInt(audio.duration * percent % 60);
+            $('#current_time').text(padLeft(minute, 2) + ":" + padLeft(second, 2));
+            var seek = audio.duration * percent;
+            // if (seek < audio.buffered.end(audio.buffered.length - 1)) {
+            if (seek > audio.buffered.end(audio.buffered.length - 1)) {
+                //alert("loading");
+                isLoading = true;
+                seekProgress = percent*100;
+                audio.pause();
+                audio.addEventListener('bufferLoaded', function () {
+                    //alert("loading2");
+                    audio.currentTime = seek;
+                    audio.play();
+                })
+            } else {
+                audio.currentTime = seek;
+            }
+                
+          
+               
+           // }
+            
+        })
+        $('.play_icon').hover(function () {
+
+        })
+        $('#play-btn').click(function () {
+           // alert($(this).data("status"));
+            if ($(this).data("status")) {
+                audio.pause();
+            } else {
+                audio.play();
+            }
+            
+        });
+        $('#playmode-btn').click(function () {
+            if (playMode >= 2) {
+                playMode=0;
+            } else {
+                playMode++;
+            }
+            
+            switch (playMode) {
+                case 0:
+                    audio.loop = false;
+                    $(this).css('background-image', 'url("../../Image/ic_repeat_white_48dp_1x.png")');
+                    break;
+                case 1:
+                    audio.loop = true;
+                    $(this).css('background-image', 'url("../../Image/ic_repeat_one_white_48dp_1x.png")');
+                    break;
+                case 2:
+                    audio.loop = false;
+                    $(this).css('background-image', 'url("../../Image/ic_shuffle_white_48dp_1x.png")');
+                    break;
+
+            }
+        });
+        $('#next-btn').click(function () {
+            next();
+        });
+        $('.play_icon').click(function () {
+            $("#player-wrapper").show(500).css({ 'position': 'fixed' });
+            $('#player-wrapper').animate({
+                'bottom': 0,
+            });
+            playIndex = $(this).data('index');
+            
+           // alert(playIndex);
+            //alert($('.contenter_c').length);
+            musicPlay();
+        });
+    });
+    function next() {
+        switch (playMode) {
+            case 1:                
+                break;
+            case 0:               
+                playIndex++;
+                break;
+            case 2:                
+                var random_val = Math.floor(Math.random() * songCount);
+                playIndex = random_val;
+                break;
+          
+        }
+        musicPlay();
+    }
+
+    function musicPlay() {
+        //alert(playMode);
+        //alert(playIndex);
+       // $('#play_icon').attr('src', '/Image/ic_play_circle_outline_white_48dp_2x.png');
+        $('#music-loader').css('visibility', 'visible');
+        $('#play-btn').css('background-image', 'url("../../Image/ic_play_arrow_white_48dp_1x.png")');
+        var id = $('.contenter_c').eq(playIndex).data("id");
+        var song_title = $('.contenter_c').eq(playIndex).data("title");
+        $("#my-audio").attr("src", "/Main/Stream/" + id);
+        $('#song-title').text(song_title);
+        $('#current_time').text("00:00");
+        $('#current_progress').width(0);
+        $('#buffer_progress').width(0);
+        var yyy = $('.contenter_c').eq(playIndex).find('.play_icon');
+        $('.play_icon').attr('src', '/Image/ic_play_circle_outline_white_48dp_2x.png');
+        
+        //alert(yyy);
+        mm(yyy);
+    }
+    function hideDialog1() {
+        
+        $('#myModal2').modal("show");
+        $('#myModal').modal("toggle");
+        $('body').addClass("sss");
+    }
+</script>
+@if (Model.Any())
+{
+<div style="padding:50px 20px 80px 20px; height:30px; width:100%; ">
+
+
+    <div style="float:right; margin:0;  display:flex; justify-content:space-between;  width:200px; border-radius:20px; height:30px; align-items:center;  padding: 0 15px 0 15px;" class="oo" >
+
+        <input type="search" id="search_query"  style="border:none; width:80%;    height:20px; background-color:rgba(255,255,255,0); margin:0; color:white;" placeholder="Search" />
+        <button type="submit" id="q_submit" style="border:none;     cursor:pointer; background-color:rgba(255,255,255,0);    background-image:url('../../Image/ic_search_white_36dp_1x.png'); background-size:contain; width:20px; height:20px; " value="search"></button>
+
+
+    </div>
+</div>
+}
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade"  id="myModal" tabindex="-1" role="dialog"  aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm edit-box"  >
+        <div class="modal-content" style="margin-top:200px;">
+            <div class="modal-header ">              
+                <button type="button" class="close" data-dismiss="modal" ><span class="btn-close" aria-hidden="true">&times;</span><span   class="sr-only">Close</span></button>
+                <h4 class="modal-title dialog-title" ></h4>                
+            </div>
+            <div class="modal-body " >
+               <ul class="edit-div">
+                   <li class="edit_select" onclick="hideDialog1()"  style="border-bottom:solid thin gray">更改歌名</li>  
+                   <li class="edit_select" id="add-list-song" style="border-bottom:solid thin gray">加入清單</li>                 
+                   <li id="delete-btn" class="edit_select">刪除</li>
+                   
+               </ul>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="addListModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabe3" aria-hidden="true">
+    <div class="modal-dialog modal-sm edit-box">
+        <div class="modal-content" style="margin-top:200px;">
+            <div class="modal-header ">
+                <button type="button" class="close" data-dismiss="modal"><span class="btn-close" aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title dialog-title"></h4>
+            </div>
+            <div class="modal-body ">
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        選取清單
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu pull-right"  id="list-dropdown" aria-labelledby="dropdownMenu1">
+                       
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="addSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabe4" aria-hidden="true">
+    <div class="modal-dialog modal-sm edit-box">
+        <div class="modal-content" style="margin-top:200px;">
+           成功加入清單!
+        </div>
+    </div>
+</div>
+<div class="modal fade sss" id="myModal2"   role="dialog" aria-labelledby="myModalLabel2" >
+    <div class="modal-dialog modal-sm" style="margin-top:200px;">
+        <div class="modal-content">
+            <div class="modal-header ">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title " >更改歌名</h4>
+            </div>
+            <div class="modal-body" style="padding:20px;">
+                
+                    <input type="text" id="song_name" style="margin-bottom:20px;"  class="change-input form-control" />
+                    <input type="text" id="author" style="margin-bottom:20px;" class="change-input form-control" />
+                    <input type="submit" id="modify-submit" style="display:block; margin:auto" value="更改" class="btn btn-primary"  />
+                
+              
+            </div>
+
+        </div>
+    </div>
+</div>
+@if (!Model.Any()) {
+    <p style="display:block; margin:auto; font-family: 微軟正黑體; margin-top:100px; color:#0094ff">目前尚無歌曲</p>
+}
+@{var i = 0; }
+@foreach (var list in Model)
+{
+    <div class="contenter_c" data-id="@list.Id" data-title="@list.song_title">
+
+        <div class="wrapper oo2" style="margin:auto;"  >
+
+            <div class="inner_wrapper" >
+                <div class="text_wrapper" >
+                    <div class="song_title_wrapper"><p class="song_title">@list.song_title</p></div>
+                    <span class="author">@list.author</span>
+                </div>
+                <div class="play-btn-wrapper">
+                    <div class="img-wrapper" style="">
+                        <img class="play_icon" data-index="@i"  src="/Image/ic_play_circle_outline_white_48dp_2x.png" style="" />
+                    </div>
+                    
+                    <div data-toggle="modal" data-target="#myModal" data-author="@list.author" data-id="@list.Id" data-title="@list.song_title" class="more" style="" ></div>
+                </div>
+                
+
+            </div>
+            
+        </div>
+
+    </div>
+    i++;
+}<!---"~/Image/musicfun.gif"*/--->

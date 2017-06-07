@@ -1,0 +1,209 @@
+﻿@using MusicFun.Models
+@model Tuple<List<ListInfo>, Dictionary<string, int>>
+<style>
+    .list-title {
+    font-family:微軟正黑體;
+    }
+    .col-lg-3 {
+        margin-bottom:40px;
+    }
+    #btn_newlist {      
+
+       border:none;
+        color:white;
+        height:50px;
+        width:150px;
+        font-size:17px;       
+        margin-top:30px;
+        font-weight:500;
+        font-family:微軟正黑體;
+        border-radius:10px;
+        text-space-collapse:collapse;
+        outline:none;
+    }
+        #btn_newlist:hover {
+            opacity:0.8;
+        }
+</style>
+<script>
+    function listMusic(url) {    
+      
+            $('#container22').load('/Main/ListSongs?url='+url);
+       
+    }
+    function listClick(list_id){
+        
+        if (!isLoading) {
+            // $('#container22').load(null);
+            $('#load-box').css('visibility', 'visible');
+            $('#container22').load('/Main/OtherListSongs?list_id='+list_id,function(){
+                afterLoad(1);
+            });
+            
+        }
+        isLoading = true;
+          
+    }
+    $(document).ready(function () {
+       
+        
+        $('#addlist-submit').click(function () {
+            var formData = new FormData();            
+            if ($('#list-name').val() == "" ) {
+                alert("欄位不能為空!")
+            }
+            formData.append('list_name', $('#list-name').val());
+            $('#myModal').modal("hide");
+            if (!isLoading) {
+                // $('#container22').load(null);
+                $('#load-box').css('visibility', 'visible');
+                $('#container22').load("/Main/getSongList", function () {
+                    afterLoad(1);
+
+                });
+            }
+            isLoading = true;
+            $.ajax({
+                url: '/Main/AddList',
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                type: 'POST',
+                success: function (data) {
+                   // alert(data);
+                    myFunction("清單新增成功");
+                    /*if (data == "OK") {
+                                            $('#myModal2').modal("hide");
+                                            jj("");
+                                        }*/
+                    // UploadList.setStatus(i, 2);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(jqXHR + " " + textStatus + " " + errorThrown);
+
+                }
+            });
+            
+
+        });
+        $('#current_list').click(function () {
+
+            listMusic("CurrentList");
+        });
+        $('#always_list').click(function () {
+            listMusic("AlwaysList");
+        });
+        $('#latest_list').click(function () {
+            //alert("wefw");
+            listMusic("LatestList");
+        });
+    });
+   
+   
+    
+    
+</script>
+<div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel2">
+    <div class="modal-dialog modal-sm" style="margin-top:150px;">
+        <div class="modal-content">
+            <div class="modal-header ">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title ">新增清單</h4>
+            </div>
+            <div class="modal-body" style="padding:20px;">
+
+                <input type="text" id="list-name" style="margin-bottom:20px;" class="change-input form-control" />
+               
+                <input type="submit" id="addlist-submit" style="display:block; margin:auto" value="新增" class="btn btn-primary" />
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<button class="oo2"id="btn_newlist" data-toggle="modal" data-target="#myModal" >新增清單</button>
+<div class="list-wrapper" style="margin-top:50px; margin-bottom:700px;" >
+
+    <div class="col-lg-3" id="latest_list">
+        <div class="list-item-wrapper ">
+            <div class="list-cover">
+            </div>
+            <div class="player-btn-container oo2">
+                <img src="~/Image/ic_play_circle_outline_white_48dp_2x.png" class="player-btn" />
+            </div>
+            <div class="title-contain">
+                <span class="list-title">
+                    最近新增
+
+                </span>
+                <span class="list-total" data-url="LatesList">
+                   共 @Model.Item2["LatestList"] 首
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3" id="current_list">
+        <div class="list-item-wrapper ">
+            <div class="list-cover">
+            </div>
+            <div class="player-btn-container oo2">
+                <img src="~/Image/ic_play_circle_outline_white_48dp_2x.png" class="player-btn" />
+            </div>
+            <div class="title-contain">
+                <span class="list-title">
+                    最近播放
+
+                </span>
+                <span class="list-total" data-url="CurrentList">
+                   共 @Model.Item2["CurrentList"] 首
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3" id="always_list">
+    <div class="list-item-wrapper ">
+        <div class="list-cover">
+        </div>
+        <div class="player-btn-container oo2">
+            <img src="~/Image/ic_play_circle_outline_white_48dp_2x.png" class="player-btn" />
+        </div>
+        <div class="title-contain">
+            <span class="list-title" >
+                最多播放
+
+            </span>
+            <span class="list-total" data-url="AlwaysList">
+              共 @Model.Item2["AlwaysList"] 首
+            </span>
+        </div>
+    </div>
+</div>
+    
+        @foreach (var m in Model.Item1)
+        {
+            <div class="col-lg-3 other_list" >
+                <div class="list-item-wrapper " onclick="listClick(@m.songLists.Id)">
+                    <div class="list-cover">
+                    </div>
+                    <div class="player-btn-container oo2">
+                        <img src="~/Image/ic_play_circle_outline_white_48dp_2x.png" class="player-btn" />
+                    </div>
+                    <div class="title-contain">
+                        <span class="list-title">
+                            @m.songLists.list_name
+
+                        </span>
+                        <span class="list-total">
+                            共 @m.list_count  首
+                    </span>
+                </div>
+            </div>
+        </div>
+        }
+    
+    </div>
+
+
+
